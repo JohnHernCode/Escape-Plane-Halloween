@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
-import btnRed from '../assets/Btn.png';
+import Button from '../Objects/Button';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -8,46 +8,25 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   preload() {
+    this.add.image(350, 100, 'logo');
   }
 
   create() {
     // Game
-    this.gameButton = this.add.sprite(100, 200, 'button1')
-      .setInteractive();
-    this.centerButton(this.gameButton, 1);
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'button1', 'button2', 'Play', 'Game');
 
-    this.gameText = this.add.text(0, 0, 'Play', {
-      fontSize: '32px',
-      fill: '#fff',
-    });
-    this.centerButtonText(this.gameText, this.gameButton);
+    // Options
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'button1', 'button2', 'Options', 'Options');
 
-    this.gameButton.on('pointerdown', (pointer) => {
-      this.scene.start('Game');
-    });
+    // Credits
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'button1', 'button2', 'Credits', 'Credits');
 
-    this.input.on('pointerover', (event, gameObjects) => {
-      gameObjects[0].setTexture('button1');
-    });
-
-    this.input.on('pointerout', (event, gameObjects) => {
-      gameObjects[0].setTexture('button2');
-    });
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width / 2, config.height / 2
-        - offset * 100, config.width, config.height),
-    );
-  }
-
-  centerButtonText(gameText, gameButton) {
-    // eslint-disable-next-line no-undef
-    Phaser.Display.Align.In.Center(
-      gameText,
-      gameButton,
-    );
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
   }
 }

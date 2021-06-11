@@ -1,6 +1,9 @@
 import 'phaser';
 import myLogo from '../assets/logo.png';
 import btnRed from '../assets/Btn.png';
+import bgM from '../assets/monsters.mp3';
+import checked from '../assets/UI/play.png';
+import unchecked from '../assets/UI/pause.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -9,9 +12,6 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    // add logo image
-    this.add.image(400, 200, 'logo');
-
     // display progress bar
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
@@ -63,7 +63,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     // update file progress text
     this.load.on('fileprogress', (file) => {
-      assetText.setText(`Loading asset: ${file.key}`);
+      assetText.setText(`Washing the car while loading: ${file.key}`);
     });
 
     // remove progress bar when complete
@@ -82,6 +82,17 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('button1', btnRed);
     this.load.image('button2', btnRed);
     this.load.image('logo', myLogo);
+    this.anims.create({
+      key: 'kick',
+      frameRate: 7,
+      frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 3 }),
+      repeat: -1,
+    });
+    const kick = this.add.sprite(150, 300, 'cat');
+    kick.play('kick');
+    this.load.audio('bgMusic', [bgM]);
+    this.load.image('box', unchecked);
+    this.load.image('checkedBox', checked);
   }
 
   init() {
@@ -89,7 +100,6 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   ready() {
-    this.scene.start('Title');
     this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Title');
