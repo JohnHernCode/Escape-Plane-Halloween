@@ -1,39 +1,49 @@
-import Phaser from 'phaser';
-import logoImg from './assets/logo.png';
+import Phaser, { Game } from 'phaser';
+import './style.css';
+import GameScene from './Scenes/GameScene';
+import BootScene from './Scenes/BootScene';
+import PreloaderScene from './Scenes/PreloaderScene';
+import TitleScene from './Scenes/TitleScene';
+import OptionsScene from './Scenes/OptionsScene';
+import CreditsScene from './Scenes/CreditsScene';
+// import config from './Config/config';
 
-class MyGame extends Phaser.Scene
-{
-    constructor ()
-    {
-        super();
-    }
-
-    preload ()
-    {
-        this.load.image('logo', logoImg);
-    }
-      
-    create ()
-    {
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
-    }
-}
-
+// class Game extends Phaser.Game {
+//   constructor() {
+//     super(config);
+//     this.scene.add('Boot', BootScene);
+//     this.scene.add('Preloader', PreloaderScene);
+//     this.scene.add('Title', TitleScene);
+//     this.scene.add('Options', OptionsScene);
+//     this.scene.add('Credits', CreditsScene);
+//     this.scene.add('Game', GameScene);
+//     this.scene.start('Game');
+//   }
+// }
+//
+// window.game = new Game();
+const canvas = document.getElementById('game-canvas');
 const config = {
-    type: Phaser.AUTO,
-    parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    scene: MyGame
+  type: Phaser.WEBGL,
+  parent: 'phaser-example',
+  width: 800,
+  height: 600,
+  canvas,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 400 },
+      debug: true,
+    },
+  },
+  scene: [
+    BootScene,
+    GameScene,
+    PreloaderScene,
+    TitleScene,
+    OptionsScene,
+    CreditsScene,
+  ],
 };
 
-const game = new Phaser.Game(config);
+const game = new Game(config);
