@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import myLogo from '../assets/logo.png';
 import spriteSheet from '../assets/ninjacat.png';
 
