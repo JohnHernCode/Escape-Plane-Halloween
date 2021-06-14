@@ -2,7 +2,8 @@ import Phaser from 'phaser';
 import lv1 from '../assets/crystal_world_map.json';
 import lv1t1 from '../assets/main_lev_build_1.png';
 import lv1t2 from '../assets/main_lev_build_2.png';
-import idleC from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
+import Player from '../entities/Player';
+import idle from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -14,18 +15,14 @@ export default class GameScene extends Phaser.Scene {
     this.load.tilemapTiledJSON('map', lv1);
     this.load.image('tile1', lv1t1);
     this.load.image('tile2', lv1t2);
-    this.load.image('idle', idleC);
+    this.load.image('player', idle);
   }
 
   create() {
     const map = this.createMap();
     const layers = this.createLayers(map);
-    this.player = this.createPlayer();
-    this.physics.add.collider(this.player, layers.platformColliders);
-
-    this.playerSpeed = 200;
-
-    this.cursors = this.input.keyboard.createCursorKeys();
+    const player = this.createPlayer();
+    this.physics.add.collider(player, layers.platformColliders);
   }
 
   createMap() {
@@ -44,20 +41,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    const player = this.physics.add.sprite(100, 250, 'idle').setScale(0.27);
-    player.body.setGravityY(500);
-    player.setCollideWorldBounds(true);
-    return player;
-  }
-
-  update() {
-    const { left, right } = this.cursors;
-    if (left.isDown) {
-      this.player.setVelocityX(-this.playerSpeed);
-    } else if (right.isDown) {
-      this.player.setVelocityX(this.playerSpeed);
-    } else {
-      this.player.setVelocityX(0);
-    }
+    return new Player(this, 100, 250).setScale(0.27);
   }
 }
