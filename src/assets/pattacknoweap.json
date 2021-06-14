@@ -1,0 +1,76 @@
+{"frames": [
+
+{
+	"filename": "NinjaCat_attack_kick_01.png",
+	"frame": {"x":0,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_kick_02.png",
+	"frame": {"x":256,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_kick_03.png",
+	"frame": {"x":512,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_kick_04.png",
+	"frame": {"x":768,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_punch_01.png",
+	"frame": {"x":1024,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_punch_02.png",
+	"frame": {"x":1280,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_punch_03.png",
+	"frame": {"x":1536,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_attack_punch_04.png",
+	"frame": {"x":1792,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pattacknoweap.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":222},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f878a50e8bec77fc02b83343eaf7a4df:5ed1bfdc0cdf95d403c4f961b4327e54:d2997c6f22ea0b5200ae4274c53fb44e$"
+}
+}

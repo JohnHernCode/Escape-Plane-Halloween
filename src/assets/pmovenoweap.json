@@ -1,0 +1,124 @@
+{"frames": [
+
+{
+	"filename": "NinjaCat_jump_01.png",
+	"frame": {"x":0,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_jump_02.png",
+	"frame": {"x":256,"y":0,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_jump_03.png",
+	"frame": {"x":0,"y":222,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_jump_04.png",
+	"frame": {"x":256,"y":222,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_jump_05.png",
+	"frame": {"x":0,"y":444,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_jump_06.png",
+	"frame": {"x":256,"y":444,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_01.png",
+	"frame": {"x":0,"y":666,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_02.png",
+	"frame": {"x":256,"y":666,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_03.png",
+	"frame": {"x":0,"y":888,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_04.png",
+	"frame": {"x":256,"y":888,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_05.png",
+	"frame": {"x":0,"y":1110,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_06.png",
+	"frame": {"x":256,"y":1110,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_07.png",
+	"frame": {"x":0,"y":1332,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+},
+{
+	"filename": "NinjaCat_walk_08.png",
+	"frame": {"x":256,"y":1332,"w":256,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":222},
+	"sourceSize": {"w":256,"h":222}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pmovenoweap.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":1554},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:76aa07c6c4bf7ebd8bf4147c452a8554:b81ba690c9e12cac408e249ab41f0fbd:ce19ba0e349e84b4ce3590579c6cf23e$"
+}
+}

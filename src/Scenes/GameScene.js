@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
-import background from '../assets/Background/Background.png';
+import lv1 from '../assets/crystal_world_map.json';
+import lv1t1 from '../assets/main_lev_build_1.png';
+import lv1t2 from '../assets/main_lev_build_2.png';
+import idleC from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -8,10 +11,53 @@ export default class GameScene extends Phaser.Scene {
 
   preload() {
     // load images
-    this.load.image('back', background);
+    this.load.tilemapTiledJSON('map', lv1);
+    this.load.image('tile1', lv1t1);
+    this.load.image('tile2', lv1t2);
+    this.load.image('idle', idleC);
   }
 
   create() {
-    this.add.image(0, 0, 'back').setOrigin(0);
+    const map = this.createMap();
+    const layers = this.createLayers(map);
+    this.player = this.createPlayer();
+    this.physics.add.collider(this.player, layers.platformColliders);
+
+    this.playerSpeed = 200;
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+  }
+
+  createMap() {
+    const map = this.make.tilemap({ key: 'map' });
+    map.addTilesetImage('main_lev_build_1', 'tile1');
+    return map;
+  }
+
+  createLayers(map) {
+    const tiles = map.getTileset('main_lev_build_1');
+    const platformColliders = map.createLayer('platform_colliders', tiles);
+    const environment = map.createLayer('environment', tiles);
+    const platforms = map.createLayer('platforms', tiles);
+    platformColliders.setCollisionByProperty({ collides: true });
+    return { environment, platforms, platformColliders };
+  }
+
+  createPlayer() {
+    const player = this.physics.add.sprite(100, 250, 'idle').setScale(0.27);
+    player.body.setGravityY(500);
+    player.setCollideWorldBounds(true);
+    return player;
+  }
+
+  update() {
+    const { left, right } = this.cursors;
+    if (left.isDown) {
+      this.player.setVelocityX(-this.playerSpeed);
+    } else if (right.isDown) {
+      this.player.setVelocityX(this.playerSpeed);
+    } else {
+      this.player.setVelocityX(0);
+    }
   }
 }
