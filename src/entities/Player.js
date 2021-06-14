@@ -16,7 +16,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
   }
 
-  preUpdate() {
+  preUpdate(time, delta) {
+    super.preUpdate(time, delta);
     const { left, right } = this.cursors;
     if (left.isDown) {
       this.setVelocityX(-this.playerSpeed);

@@ -1,21 +1,9 @@
 import Phaser from 'phaser';
-import lv1 from '../assets/crystal_world_map.json';
-import lv1t1 from '../assets/main_lev_build_1.png';
-import lv1t2 from '../assets/main_lev_build_2.png';
 import Player from '../entities/Player';
-import idle from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
-  }
-
-  preload() {
-    // load images
-    this.load.tilemapTiledJSON('map', lv1);
-    this.load.image('tile1', lv1t1);
-    this.load.image('tile2', lv1t2);
-    this.load.image('player', idle);
   }
 
   create() {

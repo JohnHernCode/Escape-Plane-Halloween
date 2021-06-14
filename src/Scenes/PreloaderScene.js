@@ -4,6 +4,10 @@ import btnRed from '../assets/Btn.png';
 import bgM from '../assets/monsters.mp3';
 import checked from '../assets/UI/play.png';
 import unchecked from '../assets/UI/pause.png';
+import idle from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
+import lv1 from '../assets/crystal_world_map.json';
+import lv1t2 from '../assets/main_lev_build_2.png';
+import lv1t1 from '../assets/main_lev_build_1.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -82,17 +86,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('button1', btnRed);
     this.load.image('button2', btnRed);
     this.load.image('logo', myLogo);
-    this.anims.create({
-      key: 'kick',
-      frameRate: 7,
-      frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 3 }),
-      repeat: -1,
-    });
-    const kick = this.add.sprite(150, 300, 'cat');
-    kick.play('kick');
     this.load.audio('bgMusic', [bgM]);
     this.load.image('box', unchecked);
     this.load.image('checkedBox', checked);
+    this.load.image('player', idle);
+    this.load.image('tile2', lv1t2);
+    this.load.tilemapTiledJSON('map', lv1);
+    this.load.image('tile1', lv1t1);
+    this.load.image('tile2', lv1t2);
   }
 
   init() {
