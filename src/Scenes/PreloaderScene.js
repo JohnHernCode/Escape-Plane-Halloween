@@ -9,7 +9,6 @@ import lv1t2 from '../assets/main_lev_build_2.png';
 import lv1t1 from '../assets/main_lev_build_1.png';
 import attack from '../assets/pattackwithweapon.png';
 import move from '../assets/moving.png';
-import config from '../Config/config';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
