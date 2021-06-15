@@ -1,11 +1,14 @@
 import Phaser from 'phaser';
 import initAnimations from './playerAnims';
+import collidable from '../mixins/collidable';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, 'player');
     scene.add.existing(this);
     scene.physics.add.existing(this);
+    // Mixins
+    Object.assign(this, collidable);
     this.init();
     this.initEvents();
   }
@@ -67,9 +70,5 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     } else {
       this.play('jump', true);
     }
-  }
-
-  addCollider(otherGameObject, callback) {
-    this.physics.add.collider(this, otherGameObject, callback, null, this);
   }
 }

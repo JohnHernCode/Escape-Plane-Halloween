@@ -9,6 +9,7 @@ import lv1t2 from '../assets/main_lev_build_2.png';
 import lv1t1 from '../assets/main_lev_build_1.png';
 import attack from '../assets/pattackwithweapon.png';
 import move from '../assets/moving.png';
+import config from '../Config/config';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -21,7 +22,7 @@ export default class PreloaderScene extends Phaser.Scene {
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(420, 270, 320, 50);
 
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
@@ -63,12 +64,12 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillRect(430, 280, 300 * value, 30);
     });
 
     // update file progress text
     this.load.on('fileprogress', (file) => {
-      assetText.setText(`Washing the car while loading: ${file.key}`);
+      assetText.setText(`Counting Cards: ${file.key}`);
     });
 
     // remove progress bar when complete
