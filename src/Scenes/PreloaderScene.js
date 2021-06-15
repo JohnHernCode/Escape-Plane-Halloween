@@ -4,10 +4,11 @@ import btnRed from '../assets/Btn.png';
 import bgM from '../assets/monsters.mp3';
 import checked from '../assets/UI/play.png';
 import unchecked from '../assets/UI/pause.png';
-import idle from '../assets/character/Animations/Standing/NinjaCat_idle_01.png';
 import lv1 from '../assets/crystal_world_map.json';
 import lv1t2 from '../assets/main_lev_build_2.png';
 import lv1t1 from '../assets/main_lev_build_1.png';
+import attack from '../assets/pattackwithweapon.png';
+import move from '../assets/moving.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -89,11 +90,16 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', [bgM]);
     this.load.image('box', unchecked);
     this.load.image('checkedBox', checked);
-    this.load.image('player', idle);
     this.load.image('tile2', lv1t2);
     this.load.tilemapTiledJSON('map', lv1);
     this.load.image('tile1', lv1t1);
     this.load.image('tile2', lv1t2);
+    this.load.spritesheet('attack', attack, {
+      frameWidth: 150, frameHeight: 222, spacing: 106,
+    });
+    this.load.spritesheet('player', move, {
+      frameWidth: 83, frameHeight: 111, spacing: 45,
+    });
   }
 
   init() {

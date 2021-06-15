@@ -29,6 +29,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    return new Player(this, 100, 250).setScale(0.27);
+    return new Player(this, 100, 250).setScale(0.5);
   }
 }
