@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
 import Player from '../entities/Player';
 import config from '../Config/config';
