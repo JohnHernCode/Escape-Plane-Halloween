@@ -1,0 +1,20 @@
+{"frames": [
+
+{
+	"filename": "enemy_sheet.png",
+	"frame": {"x":1,"y":1,"w":1773,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":4,"w":1773,"h":60},
+	"sourceSize": {"w":1792,"h":64}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "testenemy.png",
+	"format": "RGBA8888",
+	"size": {"w":1775,"h":62},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c29482d1b494a8841ea1f302da85a542:71e80e4a5a689162783d06056ec77aeb:f665f1fbad5323341cfd1feb717ca98d$"
+}
+}

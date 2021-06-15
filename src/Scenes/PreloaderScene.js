@@ -9,6 +9,7 @@ import lv1t2 from '../assets/main_lev_build_2.png';
 import lv1t1 from '../assets/main_lev_build_1.png';
 import attack from '../assets/pattackwithweapon.png';
 import move from '../assets/moving.png';
+import enemy from '../assets/enemy/enemy_sheet.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -99,6 +100,9 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     this.load.spritesheet('player', move, {
       frameWidth: 83, frameHeight: 111, spacing: 45,
+    });
+    this.load.spritesheet('birdman', enemy, {
+      frameWidth: 50, frameHeight: 64, spacing: 14,
     });
   }
 

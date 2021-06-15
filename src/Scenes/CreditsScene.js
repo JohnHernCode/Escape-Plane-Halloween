@@ -6,9 +6,6 @@ export default class CreditsScene extends Phaser.Scene {
     super('Credits');
   }
 
-  preload() {
-  }
-
   create() {
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.creditImage = this.add.image(400, 200, 'logo');
@@ -39,6 +36,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 3000,
       delay: 1000,
       onComplete() {
+        // eslint-disable-next-line no-unused-expressions
         this.destroy;
       },
     });
@@ -50,6 +48,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 8000,
       delay: 1000,
       onComplete: function () {
+        // eslint-disable-next-line no-unused-expressions
         this.madeByTween.destroy;
         this.scene.start('Title');
       }.bind(this),
