@@ -27,11 +27,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   update() {
     const {
-      left, right, up,
+      left,
+      right,
+      up,
     } = this.cursors;
     const keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     const keyD = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     const keyW = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    const isWJustDown = Phaser.Input.Keyboard.JustDown(keyW);
+    const isUpJustDown = Phaser.Input.Keyboard.JustDown(up);
 
     const onFloor = this.body.onFloor();
 
@@ -45,7 +49,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.setVelocityX(0);
     }
 
-    if ((keyW.isDown || up.isDown) && (onFloor || this.jumpCount < this.consecutiveJumps)) {
+    if ((isWJustDown || isUpJustDown) && (onFloor || this.jumpCount < this.consecutiveJumps)) {
       this.setVelocityY(-this.playerSpeed * 2);
       this.jumpCount += 1;
     }
@@ -54,10 +58,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.jumpCount = 0;
     }
 
-    if (this.body.velocity.x !== 0) {
-      this.play('run', true);
+    if (onFloor) {
+      if (this.body.velocity.x !== 0) {
+        this.play('run', true);
+      } else {
+        this.play('idle', true);
+      }
     } else {
-      this.play('idle', true);
+      this.play('jump', true);
     }
+  }
+
+  addCollider(otherGameObject, callback) {
+    this.physics.add.collider(this, otherGameObject, callback, null, this);
   }
 }

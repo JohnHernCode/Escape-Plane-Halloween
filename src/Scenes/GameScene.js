@@ -10,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
     const map = this.createMap();
     const layers = this.createLayers(map);
     const player = this.createPlayer();
-    this.physics.add.collider(player, layers.platformColliders);
+    player.addCollider(layers.platformColliders);
   }
 
   createMap() {

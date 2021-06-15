@@ -14,7 +14,7 @@ export default (anims) => {
   anims.create({
     key: 'jump',
     frames: anims.generateFrameNumbers('player', { start: 2, end: 7 }),
-    frameRate: 10,
+    frameRate: 6,
     repeat: -1,
   });
 };
