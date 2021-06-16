@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this */
+/* eslint-disable class-methods-use-this,max-len */
 import Phaser from 'phaser';
 import Player from '../entities/Player';
 import config from '../Config/config';
@@ -14,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
     const layers = this.createLayers(map);
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
-    const enemies = this.createEnemies(layers.enemySpawns);
+    const enemies = this.createEnemies(layers.enemySpawns, layers.platformsColliders);
     this.createEnemyColliders(enemies, {
       colliders: {
         platformsColliders: layers.platformColliders, player,
@@ -54,6 +54,7 @@ export default class GameScene extends Phaser.Scene {
     return new Player(this, start.x, start.y).setScale(0.35);
   }
 
+
   createEnemies(spawnLayer) {
     const enemies = new Enemies(this);
     const enemyTypes = enemies.getTypes();
@@ -61,6 +62,7 @@ export default class GameScene extends Phaser.Scene {
       const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
       enemies.add(enemy);
     });
+
     return enemies;
   }
 
