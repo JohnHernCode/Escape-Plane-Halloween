@@ -2,7 +2,7 @@
 import Phaser from 'phaser';
 import Player from '../entities/Player';
 import config from '../Config/config';
-import Birdman from '../entities/Birdman';
+import Enemies from '../groups/Enemies';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -55,7 +55,13 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createEnemies(spawnLayer) {
-    return spawnLayer.objects.map((spawnPoint) => new Birdman(this, spawnPoint.x, spawnPoint.y));
+    const enemies = new Enemies(this);
+    const enemyTypes = enemies.getTypes();
+    spawnLayer.objects.forEach((spawnPoint) => {
+      const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
+      enemies.add(enemy);
+    });
+    return enemies;
   }
 
   createPlayerColliders(player, { colliders }) {
@@ -64,11 +70,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   createEnemyColliders(enemies, { colliders }) {
-    enemies.forEach((enemy) => {
-      enemy
-        .addCollider(colliders.platformsColliders)
-        .addCollider(colliders.player);
-    });
+    enemies
+      .addCollider(colliders.platformsColliders)
+      .addCollider(colliders.player);
   }
 
   setupFollowupCameraOn(player) {
