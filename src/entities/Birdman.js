@@ -9,7 +9,6 @@ class Birdman extends Enemy {
 
   update(time, delta) {
     super.update(time, delta);
-    if (!this.active) { return; }
 
     this.play('birdman-idle', true);
   }

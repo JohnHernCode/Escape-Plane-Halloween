@@ -45,14 +45,15 @@ export default {
         line.y2 = line.y1 + raylength;
         break;
       }
+      // no default
     }
 
     const hits = layer.getTilesWithinShape(line);
 
     if (hits.length > 0) {
+      this.prevHasHit = hits.some((hit) => hit.index !== -1);
       // some will return true if at least one element satisfy the condition hit.index !== -1
-      // eslint-disable-next-line no-multi-assign
-      hasHit = this.prevHasHit = hits.some((hit) => hit.index !== -1);
+      hasHit = this.prevHasHit;
     }
 
     this.prevRay = line;
