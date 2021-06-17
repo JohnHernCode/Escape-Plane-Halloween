@@ -1,4 +1,4 @@
-/* eslint-disable class-methods-use-this,max-len */
+/* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
 import Player from '../entities/Player';
 import config from '../Config/config';
@@ -14,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
     const layers = this.createLayers(map);
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
-    const enemies = this.createEnemies(layers.enemySpawns, layers.platformsColliders);
+    const enemies = this.createEnemies(layers.enemySpawns, layers.platformColliders);
     this.createEnemyColliders(enemies, {
       colliders: {
         platformsColliders: layers.platformColliders, player,
@@ -29,6 +29,25 @@ export default class GameScene extends Phaser.Scene {
     });
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
+  }
+
+  finishDrawing(pointer, layer) {
+    this.line.x2 = pointer.worldX;
+    this.line.y2 = pointer.worldY;
+
+    this.graphics.clear();
+    this.graphics.strokeLineShape(this.line);
+
+    this.tileHits = layer.getTilesWithinShape(this.line);
+
+    if (this.tileHits.length > 0) {
+      this.tileHits.forEach((tile) => {
+        if (tile.index !== -1) {
+          tile.setCollision(true);
+        }
+      });
+    }
+    this.plotting = false;
   }
 
   createMap() {
@@ -54,17 +73,14 @@ export default class GameScene extends Phaser.Scene {
     return new Player(this, start.x, start.y).setScale(0.35);
   }
 
-  createEnemies(spawnLayer, platformsColliders) {
+  createEnemies(spawnLayer, platformColliders) {
     const enemies = new Enemies(this);
     const enemyTypes = enemies.getTypes();
-
-    spawnLayer.objects.forEach((spawnPoint, i) => {
-      if (i === 1) { return; }
+    spawnLayer.objects.forEach((spawnPoint) => {
       const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
-      enemy.setPlatformColliders(platformsColliders);
+      enemy.setPlatformColliders(platformColliders);
       enemies.add(enemy);
     });
-
     return enemies;
   }
 
