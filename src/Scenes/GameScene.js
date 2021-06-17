@@ -14,7 +14,7 @@ export default class GameScene extends Phaser.Scene {
     const layers = this.createLayers(map);
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
-    const enemies = this.createEnemies(layers.enemySpawns);
+    const enemies = this.createEnemies(layers.enemySpawns, layers.platformColliders);
     this.createEnemyColliders(enemies, {
       colliders: {
         platformsColliders: layers.platformColliders, player,
@@ -29,28 +29,6 @@ export default class GameScene extends Phaser.Scene {
     });
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
-
-    this.plotting = false;
-    this.graphics = this.add.graphics();
-    this.line = new Phaser.Geom.Line();
-    this.graphics.lineStyle(1, 0x00ff00);
-
-    this.input.on('pointerdown', this.startDrawing, this);
-    this.input.on('pointerup', (pointer) => this.finishDrawing(pointer, layers.platforms), this);
-  }
-
-  drawDebug(layer) {
-    const collidingTileColor = new Phaser.Display.Color(243, 134, 48, 200);
-    layer.renderDebug(this.graphics, {
-      tileColor: null,
-      collidingTileColor,
-    });
-  }
-
-  startDrawing(pointer) {
-    this.line.x1 = pointer.worldX;
-    this.line.y1 = pointer.worldY;
-    this.plotting = true;
   }
 
   finishDrawing(pointer, layer) {
@@ -69,8 +47,6 @@ export default class GameScene extends Phaser.Scene {
         }
       });
     }
-
-    this.drawDebug(layer);
     this.plotting = false;
   }
 
@@ -97,11 +73,12 @@ export default class GameScene extends Phaser.Scene {
     return new Player(this, start.x, start.y).setScale(0.35);
   }
 
-  createEnemies(spawnLayer) {
+  createEnemies(spawnLayer, platformColliders) {
     const enemies = new Enemies(this);
     const enemyTypes = enemies.getTypes();
     spawnLayer.objects.forEach((spawnPoint) => {
       const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
+      enemy.setPlatformColliders(platformColliders);
       enemies.add(enemy);
     });
     return enemies;
@@ -141,15 +118,5 @@ export default class GameScene extends Phaser.Scene {
     const eolOverlap = this.physics.add.overlap(player, endOfLevel, () => {
       eolOverlap.active = false;
     });
-  }
-
-  update() {
-    if (this.plotting) {
-      const pointer = this.input.activePointer;
-      this.line.x2 = pointer.worldX;
-      this.line.y2 = pointer.worldY;
-      this.graphics.clear();
-      this.graphics.strokeLineShape(this.line);
-    }
   }
 }
