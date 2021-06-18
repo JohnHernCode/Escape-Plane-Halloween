@@ -31,25 +31,6 @@ export default class GameScene extends Phaser.Scene {
     this.setupFollowupCameraOn(player);
   }
 
-  finishDrawing(pointer, layer) {
-    this.line.x2 = pointer.worldX;
-    this.line.y2 = pointer.worldY;
-
-    this.graphics.clear();
-    this.graphics.strokeLineShape(this.line);
-
-    this.tileHits = layer.getTilesWithinShape(this.line);
-
-    if (this.tileHits.length > 0) {
-      this.tileHits.forEach((tile) => {
-        if (tile.index !== -1) {
-          tile.setCollision(true);
-        }
-      });
-    }
-    this.plotting = false;
-  }
-
   createMap() {
     const map = this.make.tilemap({ key: 'map' });
     map.addTilesetImage('main_lev_build_1', 'tile1');
