@@ -14,16 +14,16 @@ export default class GameScene extends Phaser.Scene {
     const layers = this.createLayers(map);
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
-    const enemies = this.createEnemies(layers.enemySpawns, layers.platformColliders);
+    const enemies = this.createEnemies(layers.enemySpawns, layers.platformsColliders);
     this.createEnemyColliders(enemies, {
       colliders: {
-        platformsColliders: layers.platformColliders, player,
+        platformsColliders: layers.platformsColliders, player,
 
       },
     });
     this.createPlayerColliders(player, {
       colliders: {
-        platformsColliders: layers.platformColliders,
+        platformsColliders: layers.platformsColliders,
 
       },
     });
@@ -58,14 +58,14 @@ export default class GameScene extends Phaser.Scene {
 
   createLayers(map) {
     const tiles = map.getTileset('main_lev_build_1');
-    const platformColliders = map.createLayer('platform_colliders', tiles);
+    const platformsColliders = map.createLayer('platform_colliders', tiles);
     const environment = map.createLayer('environment', tiles);
     const platforms = map.createLayer('platforms', tiles);
     const playerZones = map.getObjectLayer('player_zones');
     const enemySpawns = map.getObjectLayer('enemy_spawns');
-    platformColliders.setCollisionByProperty({ collides: true });
+    platformsColliders.setCollisionByProperty({ collides: true });
     return {
-      environment, platforms, platformColliders, playerZones, enemySpawns,
+      environment, platforms, platformsColliders, playerZones, enemySpawns,
     };
   }
 
@@ -73,12 +73,12 @@ export default class GameScene extends Phaser.Scene {
     return new Player(this, start.x, start.y).setScale(0.35);
   }
 
-  createEnemies(spawnLayer, platformColliders) {
+  createEnemies(spawnLayer, platformsColliders) {
     const enemies = new Enemies(this);
     const enemyTypes = enemies.getTypes();
     spawnLayer.objects.forEach((spawnPoint) => {
       const enemy = new enemyTypes[spawnPoint.type](this, spawnPoint.x, spawnPoint.y);
-      enemy.setPlatformColliders(platformColliders);
+      enemy.setPlatformColliders(platformsColliders);
       enemies.add(enemy);
     });
     return enemies;

@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
 
 export default {
-  addCollider(otherGameobject, callback, context) {
-    this.scene.physics.add.collider(this, otherGameobject, callback, null, context || this);
+  addCollider(otherGameObject, callback, context) {
+    this.scene.physics.add.collider(this, otherGameObject, callback, null, context || this);
     return this;
   },
-  addOverlap(otherGameobject, callback, context) {
-    this.scene.physics.add.overlap(this, otherGameobject, callback, null, context || this);
+  addOverlap(otherGameObject, callback, context) {
+    this.scene.physics.add.overlap(this, otherGameObject, callback, null, context || this);
     return this;
   },
   bodyPositionDifferenceX: 0,
@@ -51,7 +51,7 @@ export default {
     const hits = layer.getTilesWithinShape(line);
 
     if (hits.length > 0) {
-      this.prevHasHit = hits.some((hit) => hit.index !== -1);
+      this.prevHasHit = hits.some((hit) => hit.index !== -1); //
       // some will return true if at least one element satisfy the condition hit.index !== -1
       hasHit = this.prevHasHit;
     }
