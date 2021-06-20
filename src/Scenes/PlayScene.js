@@ -21,8 +21,21 @@ export default class PlayScene extends BaseScene {
     this.upVelocity = 300;
 
     this.wallHorizontalDist = 0;
-    this.wallVertDistRange = [150, 250];
-    this.wallHorizontalDistRange = [500, 600];
+    this.currentDifficulty = 'easy';
+    this.difficulties = {
+      easy: {
+        wallHorizontalDistRange: [300, 350],
+        wallVertDistRange: [150, 200],
+      },
+      normal: {
+        wallHorizontalDistRange: [280, 330],
+        wallVertDistRange: [140, 190],
+      },
+      hard: {
+        wallHorizontalDistRange: [250, 310],
+        wallVertDistRange: [50, 100],
+      },
+    };
     this.score = 0;
     this.scoreText = '';
   }
@@ -35,6 +48,7 @@ export default class PlayScene extends BaseScene {
   }
 
   create() {
+    this.currentDifficulty = 'easy';
     super.create();
     this.createBG();
     this.createPlane();
@@ -145,10 +159,11 @@ export default class PlayScene extends BaseScene {
   }
 
   placeWalls(uWall, lWall) {
+    const difficulty = this.difficulties[this.currentDifficulty];
     const rightMostX = this.getRightMostWall();
-    const wallVertDist = Phaser.Math.Between(...this.wallVertDistRange);
+    const wallVertDist = Phaser.Math.Between(...difficulty.wallVertDistRange);
     const wallVertPos = Phaser.Math.Between(0 + 20, this.config.height - 20 - wallVertDist);
-    const wallHorizontalDist = Phaser.Math.Between(...this.wallHorizontalDistRange);
+    const wallHorizontalDist = Phaser.Math.Between(...difficulty.wallHorizontalDistRange);
 
     uWall.x = rightMostX + wallHorizontalDist;
     uWall.y = wallVertPos;
@@ -166,9 +181,20 @@ export default class PlayScene extends BaseScene {
           this.placeWalls(...tempWalls);
           this.increaseScore();
           this.saveBestScore();
+          this.increaseDifficulty();
         }
       }
     });
+  }
+
+  increaseDifficulty() {
+    if (this.score === 1) {
+      this.currentDifficulty = 'normal';
+    }
+
+    if (this.score === 3) {
+      this.currentDifficulty = 'hard';
+    }
   }
 
   getRightMostWall() {
