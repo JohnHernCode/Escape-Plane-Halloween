@@ -1,39 +1,47 @@
 /* eslint-disable class-methods-use-this */
 import Phaser from 'phaser';
+import BaseScene from './BaseScene';
 import BG from '../assets/BG.png';
 import planeGuy from '../assets/Plane/FlyScaled.png';
 import walls from '../assets/Tiles/walls.png';
+import pause from '../assets/Pause_BTNScale.png';
 
 const WALLS_TO_RENDER = 4;
 
-export default class PlayScene extends Phaser.Scene {
+export default class PlayScene extends BaseScene {
   constructor(config) {
-    super('PlayScene');
-    this.config = config;
+    super('PlayScene', config);
 
     this.plane = null;
     this.allWalls = null;
 
     this.VELOCITY = 200;
 
-    this.upVelocity = 250;
+    this.upVelocity = 300;
 
     this.wallHorizontalDist = 0;
     this.wallVertDistRange = [150, 250];
     this.wallHorizontalDistRange = [500, 600];
+    this.score = 0;
+    this.scoreText = '';
   }
 
   preload() {
     this.load.image('bg', BG);
     this.load.image('plane', planeGuy);
     this.load.image('wall', walls);
+    this.load.image('pause', pause);
   }
 
   create() {
+    super.create();
     this.createBG();
     this.createPlane();
     this.createWalls();
+    this.createColliders();
     this.handleInputs();
+    this.createScore();
+    this.createPause();
   }
 
   update() {
@@ -49,20 +57,47 @@ export default class PlayScene extends Phaser.Scene {
     this.plane = this.physics.add.sprite(
       this.config.startPosition.x, this.config.startPosition.y, 'plane',
     ).setOrigin(0);
-    this.plane.body.gravity.y = 400;
+    this.plane.body.gravity.y = 600;
+    this.plane.setCollideWorldBounds(true);
   }
 
   createWalls() {
     this.allWalls = this.physics.add.group();
 
     for (let i = 0; i < WALLS_TO_RENDER; i += 1) {
-      const upperWall = this.allWalls.create(0, 0, 'wall').setOrigin(0, 1);
-      const lowerWall = this.allWalls.create(0, 0, 'wall').setOrigin(0, 0);
+      const upperWall = this.allWalls.create(0, 0, 'wall')
+        .setImmovable(true)
+        .setOrigin(0, 1);
+      const lowerWall = this.allWalls.create(0, 0, 'wall')
+        .setImmovable(true)
+        .setOrigin(0, 0);
 
       this.placeWalls(upperWall, lowerWall);
     }
 
     this.allWalls.setVelocityX(-200);
+  }
+
+  createColliders() {
+    this.physics.add.collider(this.plane, this.allWalls, this.gameOver, null, this);
+  }
+
+  createScore() {
+    this.score = 0;
+    const bestScore = localStorage.getItem('bestScore');
+    this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000' });
+    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000' });
+  }
+
+  createPause() {
+    const pauseButton = this.add.image(this.config.width - 10, this.config.height - 10, 'pause')
+      .setInteractive()
+      .setScale(2)
+      .setOrigin(1);
+    pauseButton.on('pointerdown', () => {
+      this.physics.pause();
+      this.scene.pause();
+    });
   }
 
   handleInputs() {
@@ -73,8 +108,8 @@ export default class PlayScene extends Phaser.Scene {
   }
 
   checkGameStatus() {
-    if (this.plane.y > this.config.height || this.plane.y < -this.plane.height) {
-      this.restartPosition();
+    if (this.plane.getBounds().bottom >= this.config.height || this.plane.y <= 0) {
+      this.gameOver();
     }
   }
 
@@ -98,6 +133,8 @@ export default class PlayScene extends Phaser.Scene {
         tempWalls.push(wall);
         if (tempWalls.length === 2) {
           this.placeWalls(...tempWalls);
+          this.increaseScore();
+          this.saveBestScore();
         }
       }
     });
@@ -113,13 +150,34 @@ export default class PlayScene extends Phaser.Scene {
     return rightMostX;
   }
 
-  restartPosition() {
-    this.plane.x = this.config.startPosition.x;
-    this.plane.y = this.config.startPosition.y;
-    this.plane.body.velocity.y = 0;
+  saveBestScore() {
+    const bestScoreText = localStorage.getItem('bestScore');
+    const bestScore = bestScoreText && parseInt(bestScoreText, 10);
+
+    if (!bestScore || this.score > bestScore) {
+      localStorage.setItem('bestScore', this.score);
+    }
+  }
+
+  gameOver() {
+    this.physics.pause();
+    this.plane.setTint(0xEE4824);
+    this.saveBestScore();
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        this.scene.restart();
+      },
+      loop: false,
+    });
   }
 
   up() {
     this.plane.body.velocity.y = -this.upVelocity;
+  }
+
+  increaseScore() {
+    this.score += 1;
+    this.scoreText.setText(`Score: ${this.score}`);
   }
 }

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Button from '../Objects/Button';
 import config from '../Config/config';
+import BG from '../assets/BG.png';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -8,6 +9,8 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('bg', BG);
+    this.add.image(0, 0, 'bg').setOrigin(0);
     this.add.image(config.width / 2 - 35, 100, 'logo');
   }
 

@@ -17,6 +17,10 @@ const SHARED_CONFIG = {
   startPosition: PLANE_POSITION,
 };
 
+const Scenes = [BootScene, PreloaderScene, TitleScene, OptionsScene, CreditsScene, PlayScene];
+const createScene = (Scene) => new Scene(SHARED_CONFIG);
+const initScenes = () => Scenes.map(createScene);
+
 const config = {
   type: Phaser.AUTO,
   ...SHARED_CONFIG,
@@ -26,8 +30,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [BootScene, PreloaderScene, TitleScene,
-    CreditsScene, OptionsScene, new PlayScene(SHARED_CONFIG)],
+  scene: initScenes(),
 };
 
 new Phaser.Game(config);
