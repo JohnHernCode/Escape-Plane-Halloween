@@ -6,6 +6,8 @@ import BootScene from './Scenes/BootScene';
 import CreditsScene from './Scenes/CreditsScene';
 import OptionsScene from './Scenes/OptionsScene';
 import TitleScene from './Scenes/TitleScene';
+import ScoreScene from './Scenes/ScoreScene';
+import PauseScene from './Scenes/PauseScene';
 
 const WIDTH = 1200;
 const HEIGHT = 600;
@@ -17,7 +19,8 @@ const SHARED_CONFIG = {
   startPosition: PLANE_POSITION,
 };
 
-const Scenes = [BootScene, PreloaderScene, TitleScene, OptionsScene, CreditsScene, PlayScene];
+const Scenes = [BootScene, PreloaderScene, TitleScene, OptionsScene,
+  CreditsScene, ScoreScene, PlayScene, PauseScene];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);
 

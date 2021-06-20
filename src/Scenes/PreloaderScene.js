@@ -7,6 +7,7 @@ import unchecked from '../assets/Objects/Sign.png';
 import BG from '../assets/BG.png';
 import planeGuy from '../assets/Plane/FlyScaled.png';
 import walls from '../assets/Tiles/walls.png';
+import backButton from '../assets/Backward_BTNScale.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -91,6 +92,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('bg', BG);
     this.load.image('plane', planeGuy);
     this.load.image('wall', walls);
+    this.load.image('back', backButton);
   }
 
   init() {

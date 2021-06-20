@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-expressions */
 import BaseScene from './BaseScene';
 
-export default class OptionsScene extends BaseScene {
+class PauseScene extends BaseScene {
   constructor(config) {
-    super('Options', config);
+    super('PauseScene', config);
+
     this.menu = [
-      { scene: 'ScoreScene', text: 'Score' },
-      { scene: 'Title', text: 'Title Screen' },
+      { scene: 'PlayScene', text: 'Continue' },
+      { scene: 'Title', text: 'Exit' },
     ];
   }
 
@@ -28,7 +29,17 @@ export default class OptionsScene extends BaseScene {
     });
 
     textGO.on('pointerup', () => {
-      menuItem.scene && this.scene.start(menuItem.scene);
+      if (menuItem.scene && menuItem.text === 'Continue') {
+        // Shutting down the Pause Scene and resuming the Play Scene
+        this.scene.stop();
+        this.scene.resume(menuItem.scene);
+      } else {
+        // Shutting PlayScene, PauseScene and running Menu
+        this.scene.stop('PlayScene');
+        this.scene.start(menuItem.scene);
+      }
     });
   }
 }
+
+export default PauseScene;

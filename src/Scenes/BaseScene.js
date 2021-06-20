@@ -5,13 +5,23 @@ class BaseScene extends Phaser.Scene {
     super(key);
     this.config = config;
     this.screenCenter = [config.width / 2, config.height / 2];
-    this.fontSize = 34;
-    this.lineHeight = 42;
-    this.fontOptions = { fontSize: `${this.fontSize}px`, fill: '#fff' };
+    this.fontSize = 50;
+    this.lineHeight = 60;
+    this.fontOptions = { fontSize: `${this.fontSize}px`, fill: '#000' };
   }
 
   create() {
     this.add.image(0, 0, 'bg').setOrigin(0);
+    if (this.config.canGoBack) {
+      const backButton = this.add.image(this.config.width - 10, this.config.height - 10, 'back')
+        .setOrigin(1)
+        .setScale(2)
+        .setInteractive();
+
+      backButton.on('pointerup', () => {
+        this.scene.start('Options');
+      });
+    }
   }
 
   createMenu(menu, setupMenuEvents) {
