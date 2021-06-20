@@ -1,16 +1,17 @@
 import Phaser from 'phaser';
-import config from '../Config/config';
 
 export default class CreditsScene extends Phaser.Scene {
-  constructor() {
+  constructor(config) {
     super('Credits');
+    this.config = config;
   }
 
   create() {
     this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
     this.creditImage = this.add.image(400, 200, 'logo');
     this.madeByText = this.add.text(0, 0, 'Created By: Placeholder', { fontSize: '26px', fill: '#fff' });
-    this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
+    this.zone = this.add.zone(this.config.width / 2,
+      this.config.height / 2, this.config.width, this.config.height);
 
     Phaser.Display.Align.In.Center(
       this.creditsText,
