@@ -49,7 +49,7 @@ module.exports = {
       cwd: process.cwd(),
     }),
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist/**/*')],
+      cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist/')],
     }),
   ],
 };
