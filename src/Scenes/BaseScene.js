@@ -8,6 +8,14 @@ class BaseScene extends Phaser.Scene {
     this.fontSize = 50;
     this.lineHeight = 60;
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: '#000' };
+    this.endpoint = 'https://us-central1-js-capstone-'
+      + 'backend.cloudfunctions.net/api/games/oOtMuc9HceWHSqCFJJSD/scores/';
+    this.scoreOptions = {
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
   }
 
   create() {

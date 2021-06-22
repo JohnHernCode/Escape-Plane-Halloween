@@ -8,6 +8,8 @@ import OptionsScene from './Scenes/OptionsScene';
 import TitleScene from './Scenes/TitleScene';
 import ScoreScene from './Scenes/ScoreScene';
 import PauseScene from './Scenes/PauseScene';
+import UserScene from './Scenes/UserScene';
+import SubmitScene from './Scenes/SubmitScene';
 
 const WIDTH = 1200;
 const HEIGHT = 600;
@@ -20,20 +22,27 @@ const SHARED_CONFIG = {
 };
 
 const Scenes = [BootScene, PreloaderScene, TitleScene, OptionsScene,
-  CreditsScene, ScoreScene, PlayScene, PauseScene];
+  CreditsScene, ScoreScene, UserScene, PlayScene, PauseScene, SubmitScene];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);
 
 const config = {
   type: Phaser.AUTO,
+  parent: 'container',
   ...SHARED_CONFIG,
+  pixelArt: true,
   physics: {
     default: 'arcade',
     arcade: {
       debug: true,
     },
   },
+  dom: {
+    createContainer: true,
+    expandParent: true,
+  },
   scene: initScenes(),
 };
 
+// eslint-disable-next-line no-new
 new Phaser.Game(config);

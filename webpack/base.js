@@ -18,6 +18,10 @@ module.exports = {
         },
       },
       {
+        test: /\.html$/i,
+        use: ['html-loader'],
+      },
+      {
         test: [/\.vert$/, /\.frag$/],
         use: 'raw-loader',
       },

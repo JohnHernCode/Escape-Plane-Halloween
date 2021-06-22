@@ -5,9 +5,9 @@ import bgM from '../assets/DOSSD.mp3';
 import checked from '../assets/Objects/ArrowSign.png';
 import unchecked from '../assets/Objects/Sign.png';
 import BG from '../assets/BG.png';
-import planeGuy from '../assets/Plane/FlyScaled.png';
 import walls from '../assets/Tiles/walls.png';
 import backButton from '../assets/Backward_BTNScale.png';
+import planeSprite from '../assets/planesprite.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -90,7 +90,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', unchecked);
     this.load.image('checkedBox', checked);
     this.load.image('bg', BG);
-    this.load.image('plane', planeGuy);
+    this.load.spritesheet('plane', planeSprite, {
+      frameWidth: 116, frameHeight: 80,
+    });
     this.load.image('wall', walls);
     this.load.image('back', backButton);
   }

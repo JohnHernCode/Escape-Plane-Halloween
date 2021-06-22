@@ -24,16 +24,16 @@ export default class PlayScene extends BaseScene {
     this.currentDifficulty = 'easy';
     this.difficulties = {
       easy: {
-        wallHorizontalDistRange: [300, 350],
-        wallVertDistRange: [150, 200],
+        wallHorizontalDistRange: [500, 600],
+        wallVertDistRange: [200, 300],
       },
       normal: {
-        wallHorizontalDistRange: [280, 330],
+        wallHorizontalDistRange: [330, 430],
         wallVertDistRange: [140, 190],
       },
       hard: {
         wallHorizontalDistRange: [250, 310],
-        wallVertDistRange: [50, 100],
+        wallVertDistRange: [100, 140],
       },
     };
     this.score = 0;
@@ -58,6 +58,18 @@ export default class PlayScene extends BaseScene {
     this.createScore();
     this.createPause();
     this.listenToEvents();
+    this.anims.create({
+      key: 'fly',
+      frames: this.anims.generateFrameNumbers('plane', { start: 1, end: 2 }),
+      // 24 fps default, it will play animation consisting of 24 frames in 1 second
+      // in case of framerate 2 and sprite of 8 frames animations will play in
+      // 4 sec; 8 / 2 = 4
+      frameRate: 8,
+      // repeat infinitely
+      repeat: -1,
+    });
+
+    this.plane.play('fly');
   }
 
   update() {
@@ -98,7 +110,10 @@ export default class PlayScene extends BaseScene {
   createPlane() {
     this.plane = this.physics.add.sprite(
       this.config.startPosition.x, this.config.startPosition.y, 'plane',
-    ).setOrigin(0);
+    )
+      // .setFlipX(true)
+      .setScale(0.7)
+      .setOrigin(0);
     this.plane.body.gravity.y = 600;
     this.plane.setCollideWorldBounds(true);
   }
@@ -188,11 +203,11 @@ export default class PlayScene extends BaseScene {
   }
 
   increaseDifficulty() {
-    if (this.score === 1) {
+    if (this.score === 3) {
       this.currentDifficulty = 'normal';
     }
 
-    if (this.score === 3) {
+    if (this.score === 15) {
       this.currentDifficulty = 'hard';
     }
   }
@@ -223,7 +238,7 @@ export default class PlayScene extends BaseScene {
     this.time.addEvent({
       delay: 1000,
       callback: () => {
-        this.scene.restart();
+        this.scene.start('SubmitScene');
       },
       loop: false,
     });

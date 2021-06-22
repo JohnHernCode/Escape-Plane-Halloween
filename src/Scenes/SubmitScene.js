@@ -1,9 +1,9 @@
 import BaseScene from './BaseScene';
-import { getScore } from '../APICall';
+import { setScore } from '../APICall';
 
-export default class ScoreScene extends BaseScene {
+export default class SubmitScene extends BaseScene {
   constructor(config) {
-    super('ScoreScene', { ...config, canGoBack: true });
+    super('SubmitScene', { ...config, canGoBack: true });
   }
 
   create() {
