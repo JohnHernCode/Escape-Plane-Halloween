@@ -4,7 +4,7 @@
   "description": "A Phaser 3 Project Template",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest --verbose --env=jsdom",
+    "test": "jest",
     "test-watch": "jest --verbose --watch --env=jsdom",
     "watch": "webpack --watch -c ./webpack/base.js",
     "build": "webpack --config webpack/prod.js ",
@@ -51,12 +51,17 @@
   },
   "dependencies": {
     "babel-eslint": "^10.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "phaser": "^3.55.2",
     "regenerator-runtime": "^0.13.7"
   },
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
-    }
+    },
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   }
 }
