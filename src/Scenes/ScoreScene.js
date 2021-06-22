@@ -15,11 +15,18 @@ export default class ScoreScene extends BaseScene {
       'loading...',
       {
         fontSize: '32px',
-        fill: '#000000',
+        fill: '#FF0000',
       },
     ).setOrigin(0.5);
     // endpoint and options were defined on the base scene
     getScore.bind(this)(this.endpoint, this.scoreOptions, this.returnFirst);
+
+    this.backButton = this.add.sprite(this.config.width / 2,
+      this.config.height / 2 + 200, 'bkBtn').setInteractive();
+
+    this.backButton.on('pointerup', () => {
+      this.scene.start('Title');
+    });
   }
 
   returnFirst(input) {

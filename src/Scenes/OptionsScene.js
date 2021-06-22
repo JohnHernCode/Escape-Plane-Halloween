@@ -12,7 +12,21 @@ export default class OptionsScene extends BaseScene {
 
   create() {
     super.create();
-    this.createMenu(this.menu, this.setupMenuEvents.bind(this));
+    this.scoreButton = this.add.sprite(this.config.width / 2,
+      this.config.height / 2 - 100, 'leader').setInteractive();
+
+    this.scoreButton.on('pointerup', () => {
+      this.scene.start('ScoreScene');
+    });
+
+    this.backButton = this.add.sprite(this.config.width / 2,
+      this.config.height / 2 + 100, 'bkBtn').setInteractive();
+
+    this.backButton.on('pointerup', () => {
+      this.scene.start('Title');
+    });
+
+    // this.createMenu(this.menu, this.setupMenuEvents.bind(this));
   }
 
   setupMenuEvents(menuItem) {

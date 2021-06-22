@@ -14,6 +14,12 @@ export default class SubmitScene extends BaseScene {
     this.load.image('sub', subButton);
   }
 
+  checkResolve(data) {
+    if (data.result) {
+      this.scene.start('Title');
+    }
+  }
+
   create() {
     super.create();
     this.gameButton = this.add.sprite(this.config.width / 2,

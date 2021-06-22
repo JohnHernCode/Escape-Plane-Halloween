@@ -8,6 +8,8 @@ import BG from '../assets/BG.png';
 import walls from '../assets/Tiles/walls.png';
 import backButton from '../assets/Backward_BTNScale.png';
 import planeSprite from '../assets/planesprite.png';
+import backButton2 from '../assets/BtnBK.png';
+import leaderBoard from '../assets/BtnLB.png';
 
 // eslint-disable-next-line no-undef
 export default class PreloaderScene extends Phaser.Scene {
@@ -95,6 +97,8 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     this.load.image('wall', walls);
     this.load.image('back', backButton);
+    this.load.image('bkBtn', backButton2);
+    this.load.image('leader', leaderBoard);
   }
 
   init() {

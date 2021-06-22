@@ -16,9 +16,4 @@ async function setScore(url, opt, userData, callback) {
   return (callback.bind(this))(data);
 }
 
-function checkResolve(data) {
-  if (data.result) {
-    this.scene.start('TitleScene');
-  }
-}
-export { getScore, setScore, checkResolve };
+export { getScore, setScore };
