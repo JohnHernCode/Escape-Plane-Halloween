@@ -10,7 +10,7 @@ class BaseScene extends Phaser.Scene {
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: '#000' };
     this.gameName = 'escape-cloud';
     this.endpoint = 'https://us-central1-js-capstone-'
-      + 'backend.cloudfunctions.net/api/games/EZH7qaKKiKGHFhkXJT4b/scores/';
+      + 'backend.cloudfunctions.net/api/games/XW18hZOJbSUNsh4C3F3k/scores/';
     this.scoreOptions = {
       mode: 'cors',
       headers: {
