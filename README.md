@@ -18,7 +18,7 @@ The goal is to escape the danger behind while traversing the dangers ahead. It i
 This project's build is Javascript, Webpack, Phaser, and Jest.
 
 ## Game Document
-![GAME DOC](https://docs.google.com/document/d/1E9_UDQlvt4YEqbcrJko6WlVl2hbDQvRmnHjbCgbUiTU/edit?usp=sharing)
+[GAME DOC](https://docs.google.com/document/d/1E9_UDQlvt4YEqbcrJko6WlVl2hbDQvRmnHjbCgbUiTU/edit?usp=sharing)
 ## Screen Shot
 
 ![screenshot](/screenshot.png)
