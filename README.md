@@ -18,7 +18,7 @@ The goal is to escape the danger behind while traversing the dangers ahead. It i
 This project's build is Javascript, Webpack, Phaser, and Jest.
 
 ## Game Document
-[GAME DOC](https://docs.google.com/document/d/1E9_UDQlvt4YEqbcrJko6WlVl2hbDQvRmnHjbCgbUiTU/edit?usp=sharing)
+[GAME DOC (CTRL+click (on Windows and Linux) or CMD+click (on MacOS))](https://docs.google.com/document/d/1E9_UDQlvt4YEqbcrJko6WlVl2hbDQvRmnHjbCgbUiTU/edit?usp=sharing)
 ## Screen Shot
 
 ![screenshot](/screenshot.png)
@@ -64,10 +64,16 @@ To get a local copy up and running follow these simple example steps.
 3. Run ```npm Start``` to run the webpack server.
 4. It should automatically open in your default browser.
 
+### How to Play
 #### Create a new user
 
 Once you click on Play you will be asked to create a player/username. 
 This will be used to save your high score with your player name attached.
+
+### Controls
+Your goal is to fly through the oncoming walls and avoid them. 
+You can use either the "SPACEBAR" or the "LEFT MOUSE BUTTON" to fly up.
+Avoid flying too high or falling down while going through the obstacles. 
 
 #### Viewing the leaderboard
 
