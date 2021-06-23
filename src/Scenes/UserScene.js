@@ -22,6 +22,7 @@ export default class UserScene extends BaseScene {
 
     this.returnKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
+    // eslint-disable-next-line no-unused-vars
     this.returnKey.on('down', (e) => {
       const name = this.game.domContainer.querySelector('#name');
 
