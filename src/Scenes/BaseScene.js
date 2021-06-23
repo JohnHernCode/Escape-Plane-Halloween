@@ -8,7 +8,7 @@ class BaseScene extends Phaser.Scene {
     this.fontSize = 50;
     this.lineHeight = 60;
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: '#000' };
-    this.gameName = 'escape-cloud';
+    this.gameName = 'escape-plane-1';
     this.endpoint = 'https://us-central1-js-capstone-'
       + 'backend.cloudfunctions.net/api/games/XW18hZOJbSUNsh4C3F3k/scores/';
     this.scoreOptions = {

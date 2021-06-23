@@ -1,49 +1,107 @@
-# Phaser 3 Webpack Project Template
+<!-- TABLE OF CONTENTS -->
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
+## Table of Contents
 
-This has been updated for Phaser 3.50.0 version and above.
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Usage](#usage)
+- [Contributors](#contributors)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-Loading images via JavaScript module `import` is also supported, although not recommended.
+<!-- ABOUT THE PROJECT -->
 
-## Requirements
+## About The Project
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+This is the Microverse Javascript capstone project. It is an endless platform type side scroller. 
+The goal is to escape the danger behind while traversing the dangers ahead. It is dubbed, Escape-Plane. 
+This project's build is Javascript, Webpack, Phaser, and Jest.
 
-## Available Commands
+## Screen Shot
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
-| `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
+![screenshot](/screenshot.png)
 
-## Writing Code
+## Live Demo
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm start`.
+[Demo](https://johnherncode.github.io/Escape-Plane-Halloween/)
 
-After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server (available at `http://localhost:8080` by default).
+### Built With
 
-## Customizing the Template
+Technologies used.
 
-### Babel
+- Phaser 3
+- HTML / CSS
+- JavaScript
+- Webpack
 
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
+### Getting Started
 
- ```
-"browsers": [
-  ">0.25%",
-  "not ie 11",
-  "not op_mini all"
-]
- ```
+To get a local copy up and running follow these simple example steps.
 
-### Webpack
+### Prerequisites
 
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
+- A web browser
+- Node.js
+- A terminal
 
-## Deploying Code
+### Clone
 
-After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
+- [download zip link](https://github.com/JohnHernCode/Escape-Plane-Halloween/archive/refs/heads/develop.zip) or clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:JohnHernCode/Escape-Plane-Halloween.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/JohnHernCode/Escape-Plane-Halloween.git
+  ```
 
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
+### Usage
+1. cd the location you cloned/unzipped the file to.
+2. Run ```npm install``` to bundle install everything.
+3. Run ```npm Start``` to run the webpack server.
+4. It should automatically open in your default browser.
+
+#### Create a new user
+
+Once you click on Play you will be asked to create a player/username. 
+This will be used to save your high score with your player name attached.
+
+#### Viewing the leaderboard
+
+In the main title screen you have a button that shows options, inside this new menu, you can select Leaderboard.  
+The leaderboard shows you the latest top 3 high scores. See if you can beat them. 
+
+<!-- CONTACT -->
+
+## Contributors
+
+👤 **John Hernandez**
+
+- GitHub: [@johnhernandez-code](https://github.com/johnhernandez-code)
+- Twitter: [@JohnHernCode](https://twitter.com/JohnHernCode)
+- LinkedIn: [John Hernandez](https://www.linkedin.com/in/john-hernandez-56a7821b8/)
+
+## :handshake: Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/JohnHernCode/JS-Capstone-Game/issues).
+
+## Show your support
+
+Give a :star: if you like this project!
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+- [Microverse](https://www.microverse.org/)
+- [Phaser 3](https://phaser.io/phaser3)
+- [itch.io Assets](https://itch.io/)
+
+## Credits
+
+## 📝 License
+
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.

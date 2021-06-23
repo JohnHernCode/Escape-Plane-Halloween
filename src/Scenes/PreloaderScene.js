@@ -15,9 +15,12 @@ import leaderBoard from '../assets/BtnLB.png';
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
+    this.bgmPlaying = false;
   }
 
   preload() {
+    this.load.image('bg', BG);
+    this.add.image(0, 0, 'bg').setOrigin(0);
     // display progress bar
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
@@ -88,7 +91,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('button1', btnRed);
     this.load.image('button2', btnRed);
     this.load.image('logo', myLogo);
-    this.load.audio('bgMusic', [bgM]);
+    this.load.audio('bgMusic', bgM);
     this.load.image('box', unchecked);
     this.load.image('checkedBox', checked);
     this.load.image('bg', BG);
@@ -99,6 +102,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('back', backButton);
     this.load.image('bkBtn', backButton2);
     this.load.image('leader', leaderBoard);
+  }
+
+  create() {
+    this.bgm = this.sound.add('bgMusic');
+    if (this.bgmPlaying === false) {
+      this.bgm.play();
+      this.bgmPlaying = true;
+    }
   }
 
   init() {
