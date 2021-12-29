@@ -11,7 +11,7 @@ import PauseScene from './Scenes/PauseScene';
 import UserScene from './Scenes/UserScene';
 import SubmitScene from './Scenes/SubmitScene';
 
-const WIDTH = 1200;
+const WIDTH = 800;
 const HEIGHT = 600;
 const PLANE_POSITION = { x: WIDTH * 0.1, y: HEIGHT / 2 };
 
